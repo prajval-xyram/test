@@ -57,6 +57,7 @@ export class CcdaGeneratorComponent implements OnInit {
       this.isApiResponse = false;
       this.isFileInvalid = false;
     }
+    event.target.value = '';
   }
 
   onSubmit() {
@@ -72,14 +73,24 @@ export class CcdaGeneratorComponent implements OnInit {
         if (res) {
           this.isApiResponse = true;
           this.excelInputForm.controls['fileInput'].setValue('Upload file');
-          this.message = res?.message;
+          if (res?.message === 'succesfully generated ccda data files') {
+            this.message = 'Succesfully generated CCDA data files';
+          }
           this.ngxService.stop();
         }
       },
-      () => {
+      (error) => {
+        if (
+          error.error.message &&
+          error.error.message.includes('Invalid Header In xls File')
+        ) {
+          this.message = 'Invalid Header In XLSX File';
+        } else {
+          this.message =
+            'Could not reach the server. Try again after sometime.';
+        }
         this.excelInputForm.controls['fileInput'].setValue('Upload file');
         this.isApiResponse = true;
-        this.message = 'Could not reach the server. Try again after sometime.';
         this.ngxService.stop();
       }
     );
