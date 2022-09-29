@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class AppService {
   constructor(private http: HttpClient) {}
 
-  getData(file: any) {
+  postData(file: any) {
     return this.http.post('http://localhost:9000/api/generateCcda', file);
   }
 }

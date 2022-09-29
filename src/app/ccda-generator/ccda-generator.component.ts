@@ -56,7 +56,7 @@ export class CcdaGeneratorComponent implements OnInit {
       this.fd.append('file', this.fileToUpload[0]);
     }
 
-    this.appService.getData(this.fd).subscribe((res) => {
+    this.appService.postData(this.fd).subscribe((res) => {
       if (res) {
         this.isApiResponse = true;
         console.log(res);
