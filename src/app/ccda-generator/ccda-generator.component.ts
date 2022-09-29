@@ -16,6 +16,7 @@ export class CcdaGeneratorComponent implements OnInit {
   fileToUpload: any;
   fd: any;
   isApiResponse: boolean = false;
+  message: string = '';
 
   constructor(private appService: AppService) {}
 
@@ -56,12 +57,18 @@ export class CcdaGeneratorComponent implements OnInit {
       this.fd.append('file', this.fileToUpload[0]);
     }
 
-    this.appService.postData(this.fd).subscribe((res) => {
-      if (res) {
+    this.appService.postData(this.fd).subscribe(
+      (res) => {
+        if (res) {
+          this.isApiResponse = true;
+          this.excelInputForm.controls['fileInput'].setValue('Upload file');
+          console.log(res);
+        }
+      },
+      () => {
         this.isApiResponse = true;
-        this.excelInputForm.controls['fileInput'].setValue('Upload file');
-        console.log(res);
+        this.message = 'Could not reach the server! Try again after sometime.';
       }
-    });
+    );
   }
 }
