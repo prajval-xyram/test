@@ -8,13 +8,14 @@ import { AppService } from '../app.service';
   styleUrls: ['./ccda-generator.component.css'],
 })
 export class CcdaGeneratorComponent implements OnInit {
-  inputForm = new FormGroup({
+  excelInputForm = new FormGroup({
     fileInput: new FormControl(''),
   });
+
   fileExtension: string = '';
-  filesToUpload: any;
+  fileToUpload: any;
   fd: any;
-  response: boolean = false;
+  isApiResponse: boolean = false;
 
   constructor(private appService: AppService) {}
 
@@ -22,8 +23,8 @@ export class CcdaGeneratorComponent implements OnInit {
 
   onFileChange(event: any) {
     this.fileExtension = '';
-    this.filesToUpload = [];
-    this.response = false;
+    this.fileToUpload = [];
+    this.isApiResponse = false;
 
     if (event.target.files.length) {
       if (event.target.files[0].name.lastIndexOf('.') !== -1) {
@@ -32,9 +33,9 @@ export class CcdaGeneratorComponent implements OnInit {
           event.target.files[0].name.length
         );
         if (this.fileExtension.toLowerCase() === 'xlsx') {
-          this.filesToUpload.push(event.target.files[0]);
-          this.inputForm.controls['fileInput'].setValue(
-            this.filesToUpload[0].name
+          this.fileToUpload.push(event.target.files[0]);
+          this.excelInputForm.controls['fileInput'].setValue(
+            this.fileToUpload[0].name
           );
         } else {
           this.fileExtension = '';
@@ -43,8 +44,8 @@ export class CcdaGeneratorComponent implements OnInit {
         this.fileExtension = '';
       }
     } else {
-      this.inputForm.controls['fileInput'].setValue('Upload file');
-      this.response = false;
+      this.excelInputForm.controls['fileInput'].setValue('Upload file');
+      this.isApiResponse = false;
     }
   }
 
@@ -52,12 +53,12 @@ export class CcdaGeneratorComponent implements OnInit {
     this.fd = new FormData();
 
     if (this.fileExtension !== '') {
-      this.fd.append('file', this.filesToUpload[0]);
+      this.fd.append('file', this.fileToUpload[0]);
     }
 
     this.appService.getData(this.fd).subscribe((res) => {
       if (res) {
-        this.response = true;
+        this.isApiResponse = true;
         console.log(res);
       }
     });

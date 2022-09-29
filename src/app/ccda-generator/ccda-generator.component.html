@@ -3,7 +3,7 @@
 </div>
 <div class="main">
   <h1 class="ccda-generator-title">CCDA Generator</h1>
-  <form class="input-form" [formGroup]="inputForm">
+  <form class="input-form" [formGroup]="excelInputForm">
     <input
       id="filePanel"
       placeholder="Upload file"
@@ -27,7 +27,7 @@
         <span class="button-slanted-content">Generate CCDA</span>
       </div> -->
   </form>
-  <div class="generate-ccda-response" *ngIf="response">
+  <div class="generate-ccda-response" *ngIf="isApiResponse">
     <p>XML generated Successfully</p>
   </div>
 </div>
