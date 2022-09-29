@@ -59,6 +59,7 @@ export class CcdaGeneratorComponent implements OnInit {
     this.appService.postData(this.fd).subscribe((res) => {
       if (res) {
         this.isApiResponse = true;
+        this.excelInputForm.controls['fileInput'].setValue('Upload file');
         console.log(res);
       }
     });

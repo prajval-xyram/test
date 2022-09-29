@@ -18,14 +18,18 @@
       (change)="onFileChange($event)"
       style="display: none"
     />
-    <label for="fileInput" class="input-label">Choose file</label>
-    <button class="generate-btn" (click)="onSubmit()">Generate CCDA</button>
-    <!-- <div class="button-default button-slanted">
-        <label for="fileInput" class="button-slanted-content">Choose file</label>
-      </div>
-      <div class="button-default button-slanted" (click)="onSubmit()">
-        <span class="button-slanted-content">Generate CCDA</span>
-      </div> -->
+    <label for="fileInput" class="custom-btn">Choose file</label>
+    <button
+      [ngClass]="
+        excelInputForm.get('fileInput')?.value &&
+        excelInputForm.get('fileInput')?.value !== 'Upload file'
+          ? 'custom-btn generate-btn'
+          : 'btn-disabled'
+      "
+      (click)="onSubmit()"
+    >
+      Generate CCDA
+    </button>
   </form>
   <div class="generate-ccda-response" *ngIf="isApiResponse">
     <p>XML generated Successfully</p>

@@ -32,7 +32,7 @@
   color: gray;
 }
 
-.input-label {
+.custom-btn {
   background-color: #1ef3b3;
   padding: 0.5rem 1rem;
   cursor: pointer;
@@ -40,52 +40,33 @@
   margin: 1rem auto 0 auto;
   width: fit-content;
   border: none;
+  border-radius: 0.2rem;
 }
 
-.input-label:hover {
+.custom-btn:hover {
   background-color: #090322;
   color: #1ef3b3;
-  outline: 2px solid #1ef3b3;
+  outline: 1px solid #1ef3b3;
 }
 
 .generate-btn {
-  background-color: #1ef3b3;
-  padding: 1rem;
-  cursor: pointer;
-  display: block;
-  margin: 1rem auto 0 auto;
-  width: fit-content;
   font-size: 1rem;
   font-weight: 600;
-  border: none;
-}
-
-.generate-btn:hover {
-  background-color: #090322;
-  color: #1ef3b3;
-  outline: 2px solid #1ef3b3;
+  margin: 1.5rem auto 0 auto;
 }
 
 .btn-disabled {
   background-color: #ddd;
+  color: gray;
   padding: 0.5rem 1rem;
   cursor: not-allowed;
   display: block;
-  margin: 1rem auto 0 auto;
+  margin: 1.5rem auto 0 auto;
   width: fit-content;
-  transition: 0.25s;
-}
-
-.button-default {
-  background-color: #1ef3b3;
-  text-align: center;
-  text-transform: uppercase;
-  padding: 5px 10px;
-  margin: 10px;
-  display: block;
-  width: 150px;
-  cursor: pointer;
-  margin: 1rem auto 0 auto;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.2rem;
 }
 
 .generate-ccda-response {
@@ -100,22 +81,3 @@
   padding: 1rem;
   text-align: center;
 }
-
-/* .button-default:hover {
-    background-color: #090322;
-    color: #1ef3b3;
-    outline: 2px solid #1ef3b3;
-  }
-  
-  .button-slanted {
-    -ms-transform: skewX(-20deg);
-    -webkit-transform: skewX(-20deg);
-    transform: skewX(-20deg);
-  }
-  
-  .button-slanted-content {
-    -ms-transform: skewX(20deg);
-    -webkit-transform: skewX(20deg);
-    transform: skewX(20deg);
-    display: inline-block;
-  } */
