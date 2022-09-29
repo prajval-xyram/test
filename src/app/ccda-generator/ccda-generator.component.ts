@@ -18,6 +18,7 @@ export class CcdaGeneratorComponent implements OnInit {
   fd: any;
   isApiResponse: boolean = false;
   message: string = '';
+  isFileInvalid: boolean = false;
 
   constructor(
     private appService: AppService,
@@ -30,6 +31,7 @@ export class CcdaGeneratorComponent implements OnInit {
     this.fileExtension = '';
     this.fileToUpload = [];
     this.isApiResponse = false;
+    this.excelInputForm.controls['fileInput'].setValue('Upload file');
 
     if (event.target.files.length) {
       if (event.target.files[0].name.lastIndexOf('.') !== -1) {
@@ -38,12 +40,14 @@ export class CcdaGeneratorComponent implements OnInit {
           event.target.files[0].name.length
         );
         if (this.fileExtension.toLowerCase() === 'xlsx') {
+          this.isFileInvalid = false;
           this.fileToUpload.push(event.target.files[0]);
           this.excelInputForm.controls['fileInput'].setValue(
             this.fileToUpload[0].name
           );
         } else {
           this.fileExtension = '';
+          this.isFileInvalid = true;
         }
       } else {
         this.fileExtension = '';
@@ -51,6 +55,7 @@ export class CcdaGeneratorComponent implements OnInit {
     } else {
       this.excelInputForm.controls['fileInput'].setValue('Upload file');
       this.isApiResponse = false;
+      this.isFileInvalid = false;
     }
   }
 
@@ -63,11 +68,11 @@ export class CcdaGeneratorComponent implements OnInit {
     }
 
     this.appService.postData(this.fd).subscribe(
-      (res) => {
+      (res: any) => {
         if (res) {
           this.isApiResponse = true;
           this.excelInputForm.controls['fileInput'].setValue('Upload file');
-          console.log(res);
+          this.message = res?.message;
           this.ngxService.stop();
         }
       },

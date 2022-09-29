@@ -36,6 +36,9 @@
     >
       Generate CCDA
     </button>
+    <div class="invalid-file" *ngIf="isFileInvalid">
+      <p>Only XLSX files are allowed</p>
+    </div>
   </form>
   <div class="generate-ccda-response" *ngIf="isApiResponse">
     <p>{{ message }}</p>

@@ -30,11 +30,12 @@
   padding: 0.5rem 1rem;
   margin-top: 4rem;
   width: 80%;
-  color: gray;
+  color: darkgray;
 }
 
 .custom-btn {
-  background-color: #1ef3b3;
+  color: #1ef3b3;
+  background-color: #090322;
   padding: 0.5rem 1rem;
   cursor: pointer;
   display: block;
@@ -42,12 +43,12 @@
   width: fit-content;
   border: none;
   border-radius: 0.2rem;
+  outline: 1px solid #1ef3b3;
 }
 
 .custom-btn:hover {
-  background-color: #090322;
-  color: #ff6005;
-  outline: 1px solid #ff6005;
+  background-color: #1ef3b3;
+  color: #090322;
 }
 
 .generate-btn {
@@ -81,4 +82,11 @@
 .generate-ccda-response p {
   padding: 1rem;
   text-align: center;
+  text-transform: capitalize;
+}
+
+.invalid-file {
+  color: white;
+  margin-top: 1rem;
+  font-weight: bold;
 }

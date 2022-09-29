@@ -8,6 +8,6 @@ export class AppService {
   constructor(private http: HttpClient) {}
 
   postData(file: any) {
-    return this.http.post('http://localhost:9000/api/generateCcda', file);
+    return this.http.post('http://localhost:8080/api/generateCcda', file);
   }
 }
