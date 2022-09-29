@@ -1,0 +1,33 @@
+<div class="header">
+  <img src="../assets/2022-arcadia-full.png" alt="" />
+</div>
+<div class="main">
+  <h1 class="ccda-generator-title">CCDA Generator</h1>
+  <form class="input-form" [formGroup]="inputForm">
+    <input
+      id="filePanel"
+      placeholder="Upload file"
+      formControlName="fileInput"
+      readonly
+    />
+    <input
+      type="file"
+      id="fileInput"
+      #fileInput
+      accept=".xlsx"
+      (change)="onFileChange($event)"
+      style="display: none"
+    />
+    <label for="fileInput" class="input-label">Choose file</label>
+    <button class="generate-btn" (click)="onSubmit()">Generate CCDA</button>
+    <!-- <div class="button-default button-slanted">
+        <label for="fileInput" class="button-slanted-content">Choose file</label>
+      </div>
+      <div class="button-default button-slanted" (click)="onSubmit()">
+        <span class="button-slanted-content">Generate CCDA</span>
+      </div> -->
+  </form>
+  <div class="generate-ccda-response" *ngIf="response">
+    <p>XML generated Successfully</p>
+  </div>
+</div>
