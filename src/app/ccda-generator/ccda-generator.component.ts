@@ -67,7 +67,7 @@ export class CcdaGeneratorComponent implements OnInit {
       },
       () => {
         this.isApiResponse = true;
-        this.message = 'Could not reach the server! Try again after sometime.';
+        this.message = 'Could not reach the server. Try again after sometime.';
       }
     );
   }
