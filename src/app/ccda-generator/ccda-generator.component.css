@@ -26,6 +26,7 @@
 }
 
 #filePanel {
+  font-size: 1rem;
   padding: 0.5rem 1rem;
   margin-top: 4rem;
   width: 80%;
@@ -45,8 +46,8 @@
 
 .custom-btn:hover {
   background-color: #090322;
-  color: #1ef3b3;
-  outline: 1px solid #1ef3b3;
+  color: #ff6005;
+  outline: 1px solid #ff6005;
 }
 
 .generate-btn {
