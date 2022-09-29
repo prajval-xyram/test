@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -8,6 +9,6 @@ export class AppService {
   constructor(private http: HttpClient) {}
 
   postData(file: any) {
-    return this.http.post('http://localhost:8080/api/generateCcda', file);
+    return this.http.post(environment.baseURL + '/api/generateCcda', file);
   }
 }
