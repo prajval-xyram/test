@@ -27,6 +27,12 @@
           : 'btn-disabled'
       "
       (click)="onSubmit()"
+      [disabled]="
+        !(
+          excelInputForm.get('fileInput')?.value &&
+          excelInputForm.get('fileInput')?.value !== 'Upload file'
+        )
+      "
     >
       Generate CCDA
     </button>

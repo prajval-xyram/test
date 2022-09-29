@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { AppService } from '../app.service';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-ccda-generator',
@@ -18,7 +19,10 @@ export class CcdaGeneratorComponent implements OnInit {
   isApiResponse: boolean = false;
   message: string = '';
 
-  constructor(private appService: AppService) {}
+  constructor(
+    private appService: AppService,
+    private ngxService: NgxUiLoaderService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -51,6 +55,7 @@ export class CcdaGeneratorComponent implements OnInit {
   }
 
   onSubmit() {
+    this.ngxService.start();
     this.fd = new FormData();
 
     if (this.fileExtension !== '') {
@@ -63,11 +68,14 @@ export class CcdaGeneratorComponent implements OnInit {
           this.isApiResponse = true;
           this.excelInputForm.controls['fileInput'].setValue('Upload file');
           console.log(res);
+          this.ngxService.stop();
         }
       },
       () => {
+        this.excelInputForm.controls['fileInput'].setValue('Upload file');
         this.isApiResponse = true;
         this.message = 'Could not reach the server. Try again after sometime.';
+        this.ngxService.stop();
       }
     );
   }
